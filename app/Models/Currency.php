@@ -10,4 +10,6 @@ class Currency extends Model
     use HasFactory;
 
 	protected $primaryKey = 'currencyid';
+
+	protected $fillable = ['currencyid', 'currency_name'];
 }

@@ -17,9 +17,9 @@ class CreateTransactionsTable extends Migration
             $table->id('transactionsid');
             $table->unsignedBigInteger('accountid_from');
             $table->unsignedBigInteger('accountid_to');
-            $table->float('amount_from');
-            $table->float('amount_to');
-            $table->float('exchange_rate');
+            $table->decimal('amount_from', 25, 16);
+            $table->decimal('amount_to', 25, 16);
+            $table->decimal('exchange_rate', 17, 16);
             $table->timestamps();
 
 			$table->foreign('accountid_from')->references('accountid')->on('accounts');

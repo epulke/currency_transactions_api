@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
 			$table->id('accountid');
 			$table->string('account_number')->unique();
 			$table->unsignedBigInteger('currencyid');
-			$table->float('balance');
+			$table->decimal('balance', 25, 16);
 			$table->timestamps();
 
 			$table->foreign('currencyid')->references('currencyid')->on('currencies');

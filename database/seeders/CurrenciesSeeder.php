@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Currency;
+use App\Services\ExchangeRateService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,14 +14,13 @@ class CurrenciesSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-		$currencies = ['GBP', 'USD', 'EUR'];
+	public function run() {
+		$currencies = (new ExchangeRateService())->getCurrencies();
 
 		foreach ($currencies as $currency) {
 			DB::table('currencies')->insert([
 				'currency_name' => $currency,
 			]);
 		}
-    }
+	}
 }

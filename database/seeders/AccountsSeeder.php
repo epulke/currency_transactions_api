@@ -14,13 +14,12 @@ class AccountsSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+	public function run() {
 		$faker = Factory::create();
 
 		$currencyIds = Currency::pluck('currencyid');
 
-		foreach (range(1, 10) as $index) {
+		foreach (range(1, 100) as $index) {
 			DB::table('accounts')->insert([
 				'account_number' => $faker->unique()->bankAccountNumber,
 				'currencyid' => $faker->randomElement($currencyIds),
@@ -29,5 +28,5 @@ class AccountsSeeder extends Seeder
 				'updated_at' => now(),
 			]);
 		}
-    }
+	}
 }

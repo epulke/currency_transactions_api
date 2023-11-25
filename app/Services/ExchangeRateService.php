@@ -28,8 +28,7 @@ class ExchangeRateService {
 			."&currencies={$targetCurrency}";
 		$response_json = $this->client->get($url);
 		$response = json_decode($response_json->getBody(), true);
-		$currency_pair = $baseCurrency . $targetCurrency;
 
-		return $response['quotes'][$currency_pair];
+		return array_values($response['quotes'])[0];
 	}
 }

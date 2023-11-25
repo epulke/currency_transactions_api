@@ -14,9 +14,8 @@ class ClientsAccountsSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-		$clientids = range(1, 3);
+	public function run() {
+		$clientids = range(1, 50);
 		$accountids = Account::pluck('accountid')->toArray();
 
 		foreach ($accountids as $accountid) {
@@ -25,5 +24,5 @@ class ClientsAccountsSeeder extends Seeder
 				'accountid' => $accountid
 			]);
 		}
-    }
+	}
 }
