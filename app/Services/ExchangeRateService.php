@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\ExchangeRateServiceException;
-use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
@@ -32,12 +31,10 @@ class ExchangeRateService {
 		$currency_key = $baseCurrency . $targetCurrency;
 
 		if (!array_key_exists('quotes', $response) || !array_key_exists($currency_key, $response['quotes'])) {
-			throw new Exception("This currency quote is not available at the moment", 201);
+			throw new ExchangeRateServiceException("This currency quote is not available at the moment");
 		}
 
-		$quote = $response['quotes'][$currency_key];
-
-		return $quote;
+		return $response['quotes'][$currency_key];
 	}
 
 	private function getResponse(string $url): array {
@@ -55,12 +52,8 @@ class ExchangeRateService {
 				$attempts--;
 
 				if ($attempts === 0) {
-					$response = [
-						'success' => false,
-						'error' => ['info' => $e->getMessage()]
-					];
+					$response = ['success' => false, 'error' => ['info' => $e->getMessage()]];
 				}
-
 			}
 		}
 

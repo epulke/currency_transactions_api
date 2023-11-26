@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ExchangeRateServiceException;
 use App\Exceptions\InvalidCurrencyException;
 use App\Exceptions\NotEnoughFundsException;
 use App\Http\Requests\TransactionRequest;
@@ -46,7 +47,7 @@ class TransactionController extends Controller {
 				$transaction = $this->create($request, $exchange_rate);
 				$this->updateAccountBalance($transaction);
 			});
-		} catch (InvalidCurrencyException | NotEnoughFundsException $e) {
+		} catch (InvalidCurrencyException | NotEnoughFundsException | ExchangeRateServiceException $e) {
 			return response()->json(['error' => $e->getMessage()], $e->getCode());
 		} catch (Exception $e) {
 			return response()->json(['error' => $e->getMessage()], 500);
