@@ -3,6 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -12,9 +16,7 @@ class Handler extends ExceptionHandler
      *
      * @var array<int, class-string<Throwable>>
      */
-    protected $dontReport = [
-        //
-    ];
+    protected $dontReport = [];
 
     /**
      * A list of the inputs that are never flashed for validation exceptions.
@@ -27,15 +29,24 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    /**
-     * Register the exception handling callbacks for the application.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
-    }
+	public function render($request, Throwable $exception)
+	{
+		if ($exception instanceof ValidationException) {
+			return response()->json(['error' => $exception->validator->errors()], 422);
+		}
+
+		if ($exception instanceof BadRequestHttpException) {
+			return response()->json(['error' => $exception->getMessage()], $exception->getStatusCode());
+		}
+
+		if ($exception instanceof NotFoundHttpException) {
+			return response()->json(['error' => 'The requested endpoint is not supported.'], 404);
+		}
+
+		if ($exception instanceof MethodNotAllowedHttpException) {
+			return response()->json(['error' => 'This method is not allowed for this endpoint.'], 405);
+		}
+
+		return parent::render($request, $exception);
+	}
 }

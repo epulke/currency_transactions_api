@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransactionReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
@@ -20,6 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/accounts/{clientId}', [AccountController::class, 'getAccountsByClient']);
+Route::get('/accounts/{clientid}', [AccountController::class, 'getAccountsByClientid']);
 
 Route::post('/transactions', [TransactionController::class, 'makeTransaction']);
+
+Route::get('/account_transactions/{accountid}', [TransactionReportController::class, 'getTransactionsByAccountid']);

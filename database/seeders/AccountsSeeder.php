@@ -23,7 +23,7 @@ class AccountsSeeder extends Seeder
 			DB::table('accounts')->insert([
 				'account_number' => $faker->unique()->bankAccountNumber,
 				'currencyid' => $faker->randomElement($currencyIds),
-				'balance' => $faker->randomFloat(2, 100, 10000),
+				'balance' => $faker->randomFloat(2, 0, 10000),
 				'created_at' => now(),
 				'updated_at' => now(),
 			]);
