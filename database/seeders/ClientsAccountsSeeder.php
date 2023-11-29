@@ -7,15 +7,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory;
 
-class ClientsAccountsSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-	public function run() {
-		$clientids = range(1, 50);
+class ClientsAccountsSeeder extends Seeder {
+	public function run($number_of_clients) {
+		$clientids = range(1, $number_of_clients);
 		$accountids = Account::pluck('accountid')->toArray();
 
 		foreach ($accountids as $accountid) {

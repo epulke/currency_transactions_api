@@ -7,16 +7,8 @@ use App\Services\ExchangeRateService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CurrenciesSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-	public function run() {
-		$currencies = (new ExchangeRateService())->getCurrencies();
-
+class CurrenciesSeeder extends Seeder {
+	public function run(array $currencies) {
 		foreach ($currencies as $currency) {
 			DB::table('currencies')->insert([
 				'currency_name' => $currency,
