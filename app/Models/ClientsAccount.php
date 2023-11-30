@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ClientsAccount extends Model
 {
-    use HasFactory;
-
 	protected $table = 'clients_accounts';
 	protected $primaryKey = null;
 	public $incrementing = false;

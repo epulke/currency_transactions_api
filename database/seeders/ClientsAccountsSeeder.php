@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Account;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory;
 
 class ClientsAccountsSeeder extends Seeder {
 	public function run($number_of_clients) {

@@ -74,10 +74,14 @@ class TransactionController extends Controller {
 	}
 
 	private function create(Request $request, float $exchange_rate): Transaction {
+		bcscale(16);
+		$amount_string = (string) $request->input('amount');
+		$exchange_rate_string = sprintf('%f', (string) $exchange_rate);
+
 		$transaction = new Transaction();
 		$transaction->accountid_from = $request->input('accountid_from');
 		$transaction->accountid_to = $request->input('accountid_to');
-		$transaction->amount_from = round($request->input('amount')/$exchange_rate, 16);
+		$transaction->amount_from = bcdiv($amount_string, $exchange_rate_string);
 		$transaction->amount_to = $request->input('amount');
 		$transaction->exchange_rate = $exchange_rate;
 

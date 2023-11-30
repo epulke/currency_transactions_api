@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\DB;
 class TestDatabaseSeeder extends Seeder {
 
 	public function run() {
-		$currencies = ['EUR', 'USD', 'GBP'];
+		$currencies = ['EUR', 'USD'];
 		$number_of_accounts = 20;
 		$number_of_clients = 5;
 
 		(new CurrenciesSeeder())->run($currencies);
-		(new AccountsSeeder())->run($number_of_accounts);
-		(new ClientsAccountsSeeder())->run($number_of_clients);
+		(new TestAccountsSeeder())->run($number_of_accounts);
+		(new TestClientsAccountsSeeder())->run($number_of_clients);
+		(new TestTransactionsSeeder())->run();
 	}
 }

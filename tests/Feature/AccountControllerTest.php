@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class AccountControllerTest extends TestCase {
+class AccountControllerTest extends GeneralTestCase {
 
 	public function testValidClientidForGetAccountsByClientid() {
 		$clientid = 1;
@@ -36,7 +36,6 @@ class AccountControllerTest extends TestCase {
 				'clientid' => ' ',
 				'expected_error' => ['error' => ['clientid' => ['The clientid field is required.']]]
 			]
-
 		];
 
 		foreach ($invalid_clientids as $invalid_clientid) {

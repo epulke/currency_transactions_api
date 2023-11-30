@@ -8,10 +8,10 @@ class TransactionRequest extends FormRequest
 {
 	public function rules(): array {
 		return [
-			'accountid_from' => 'required|exists:accounts,accountid',
-			'accountid_to' => 'required|exists:accounts,accountid',
+			'accountid_from' => 'required|integer|exists:accounts,accountid',
+			'accountid_to' => 'required|integer|exists:accounts,accountid',
 			'amount' => 'required|numeric',
-			'currency' => 'required|exists:currencies,currency_name'
+			'currency' => 'required|string|exists:currencies,currency_name'
 		];
 	}
 }
