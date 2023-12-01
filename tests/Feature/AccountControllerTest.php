@@ -20,6 +20,33 @@ class AccountControllerTest extends GeneralTestCase {
 				'balance',
 			],
 		]);
+
+		$response->assertExactJson([
+			[
+				'accountid' => 1,
+				'account_number' => '1234567891',
+				'currency_name' => 'EUR',
+				'balance' => '1000.0000000000000000'
+			],
+			[
+				'accountid' => 11,
+				'account_number' => '12345678911',
+				'currency_name' => 'EUR',
+				'balance' => '1000.0000000000000000'
+			],
+			[
+				'accountid' => 6,
+				'account_number' => '1234567896',
+				'currency_name' => 'USD',
+				'balance' => '1000.0000000000000000'
+			],
+			[
+				'accountid' => 16,
+				'account_number' => '12345678916',
+				'currency_name' => 'USD',
+				'balance' => '1000.0000000000000000'
+			]
+		]);
 	}
 
 	public function testInvalidClientidForGetAccountsByClientid() {

@@ -25,17 +25,11 @@ class TransactionControllerTest extends GeneralTestCase {
 		$transactions_controller = new TransactionController($exchange_rate_service_mock);
 		$transaction_request = new TransactionRequest($this->valid_transaction_request);
 
-		$response = $this->app->call([$transactions_controller, 'makeTransaction'],
+		$this->app->call([$transactions_controller, 'makeTransaction'],
 			['request' => $transaction_request]
 		);
+
 		bcscale(16);
-//		var_dump($response);
-//		$response = $this->post($this->endpoint, $this->valid_transaction_request);
-
-//		$response->assertStatus(201);
-//		$response->assertExactJson(['message' => 'Funds transferred successfully.']);
-
-//		$this->assertEquals(['message' => 'Funds transferred successfully.'], json_decode($response));
 
 		$expected_transaction = [
 			'transactionsid' => 2,
