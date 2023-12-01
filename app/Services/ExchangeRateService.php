@@ -17,16 +17,18 @@ class ExchangeRateService {
 	}
 
 	public function getCurrencies(): array {
-		$url = "http://api.exchangerate.host/list?access_key={$this->apiKey}";
+		$url = $this->getUrl('list');
 		$response = $this->getResponse($url);
 
 		return array_keys($response['currencies']);
 	}
 
 	public function getExchangeRate(string $baseCurrency, string $targetCurrency): float {
-		$url = "http://api.exchangerate.host/live?access_key={$this->apiKey}"
-			."&source={$baseCurrency}"
-			."&currencies={$targetCurrency}";
+		$url = $this->getUrl('live', [
+			'source' => $baseCurrency,
+			'currencies' => $targetCurrency
+		]);
+
 		$response = $this->getResponse($url);
 		$currency_key = $baseCurrency . $targetCurrency;
 
@@ -66,5 +68,11 @@ class ExchangeRateService {
 		}
 
 		return $response;
+	}
+
+	private function getUrl(string $endpoint, array $url_params = []): string {
+		$url_params = array_merge(['access_key' => $this->apiKey], $url_params);
+
+		return "http://api.exchangerate.host/{$endpoint}?" . http_build_query($url_params);
 	}
 }
