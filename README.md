@@ -9,27 +9,25 @@ To start using the API download all the package contents and open the project in
 Create your own .env file based on the [.env.example](https://github.com/epulke/currency_app_1/blob/master/.env.example) file. 
 Currently, you need to change information about the database:
 
-<code>
-DB_CONNECTION=mysql
+<code>DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=currency_transactions
 DB_USERNAME=root
-DB_PASSWORD=
-</code>
+DB_PASSWORD=</code>
 
 And also you need to add [Exchangerate.host]( https://exchangerate.host/) api key, that you can get here for free. 
 Include this information in .env under:
 
-<code>
-EXCHANGERATE.HOST_API_KEY=
-</code>
+<code>EXCHANGERATE.HOST_API_KEY=</code>
+
+Install necessary libraries by running:
+
+<code>composer install</code>
 
 Then run the following command in the root of your local repository:
 
-<code>
-php artisan migrate --seed
-</code>
+<code>php artisan migrate --seed</code>
 
 This will create the necessary tables and seed your database with some data so that it would be possible to see all the possibilities of the api.
 
@@ -47,16 +45,14 @@ Just send GET request to:
 
 You will ge the list with all the available client accounts.
 
-<code>
-[
+<code>[
     {
         "accountid": 1,
         "account_number": "1234567891",
         "currency_name": "EUR",
         "balance": "1000.0000000000000000"
     }
-]
-</code>
+]</code>
 
 2. To make a transaction from one account to the other, just send POST request to the following endpoint:
 
@@ -64,14 +60,12 @@ You will ge the list with all the available client accounts.
 
 In the body of the request pass the parameters as shown in the example below:
 
-<code>
-{
+<code>{
    "accountid_from": 16,
    "accountid_to": 24,
    "amount": 10,
    "currency": "EUR"
-}
-</code>
+}</code>
 
 Be aware that the currency should match the currency of the account to which the amount is transferred.
 Excahnge rates will be taken live from [Exchangerate.host]( https://exchangerate.host/) api.
@@ -100,8 +94,7 @@ The following information will be shown:
             "updated_at": "2023-11-30T21:05:50.000000Z"
         }
     ]
-}
-</code>
+}</code>
 
 ## Testing
 
