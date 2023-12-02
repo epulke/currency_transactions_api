@@ -6,8 +6,7 @@ use App\Http\Requests\TransactionsByAccountRequest;
 use App\Models\Transaction;
 use Exception;
 
-class TransactionReportController extends Controller
-{
+class TransactionReportController extends Controller {
 	public function getTransactionsByAccountid(TransactionsByAccountRequest $request, $accountid) {
 		try {
 			$transactions = Transaction::where('accountid_from', $accountid)

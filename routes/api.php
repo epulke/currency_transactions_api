@@ -17,10 +17,6 @@ use App\Http\Controllers\AccountController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/accounts/{clientid}', [AccountController::class, 'getAccountsByClientid']);
 
 Route::post('/transactions', [TransactionController::class, 'makeTransaction']);

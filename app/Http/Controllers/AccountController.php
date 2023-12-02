@@ -6,8 +6,7 @@ use App\Http\Requests\AccountRequest;
 use Illuminate\Http\JsonResponse;
 use App\Models\ClientsAccount;
 
-class AccountController extends Controller
-{
+class AccountController extends Controller {
 	public function getAccountsByClientid(AccountRequest $request, $clientid): JsonResponse {
 		$accounts = ClientsAccount::where('clientid', $clientid)
 			->join('accounts', 'clients_accounts.accountid', '=', 'accounts.accountid')
