@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ClientsAccount extends Model
-{
+class ClientsAccount extends Model {
 	protected $table = 'clients_accounts';
 	protected $primaryKey = null;
 	public $incrementing = false;
