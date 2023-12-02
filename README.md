@@ -87,21 +87,19 @@ At the moment, for the performance purposes, the maximum number of transactions 
 The list of the transactions will appear on the screen, sorted from newest to oldest transaction.
 The following information will be shown:
 
-<code>
-{
-"transactions": 
-[
-{
-"transactionsid": 1,
-"accountid_from": 1,
-"accountid_to": 2,
-"amount_from": "10.0000000000000000",
-"amount_to": "10.9000000000000000",
-"exchange_rate": "1.0900000000000000",
-"created_at": "2023-11-30T21:05:50.000000Z",
-"updated_at": "2023-11-30T21:05:50.000000Z"
-}
-]
+<code> {
+    "transactions": [
+        {
+            "transactionsid": 1,
+            "accountid_from": 1,
+            "accountid_to": 2,
+            "amount_from": "10.0000000000000000",
+            "amount_to": "10.9000000000000000",
+            "exchange_rate": "1.0900000000000000",
+            "created_at": "2023-11-30T21:05:50.000000Z",
+            "updated_at": "2023-11-30T21:05:50.000000Z"
+        }
+    ]
 }
 </code>
 
