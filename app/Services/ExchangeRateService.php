@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Exceptions\ExchangeRateServiceException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Http;
 
 class ExchangeRateService {
 
@@ -44,7 +45,7 @@ class ExchangeRateService {
 
 		while ($attempts > 0) {
 			try {
-				$response_json = $this->client->get($url, ['timeout' => 10]);
+				$response_json = Http::get($url);
 				$response = json_decode($response_json->getBody(), true);
 
 				if ($response) {

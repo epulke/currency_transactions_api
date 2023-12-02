@@ -9,8 +9,7 @@ use Tests\TestCase;
 class GeneralTestCase extends TestCase {
 	use CreatesApplication;
 
-	public function setUp(): void
-	{
+	public function setUp(): void {
 		parent::setUp();
 
 		Artisan::call('migrate:refresh --env=testing');
