@@ -2,12 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Account;
-use App\Models\Currency;
-use App\Services\ExchangeRateService;
-use Faker\Factory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class TestDatabaseSeeder extends Seeder {
 
