@@ -4,30 +4,27 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientsAccountsTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('clients_accounts', function (Blueprint $table) {
-            $table->unsignedBigInteger('clientid');
-            $table->unsignedBigInteger('accountid');
+class CreateClientsAccountsTable extends Migration {
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up() {
+		Schema::create('clients_accounts', function (Blueprint $table) {
+			$table->unsignedBigInteger('clientid');
+			$table->unsignedBigInteger('accountid');
 
 			$table->foreign('accountid')->references('accountid')->on('accounts');
-        });
-    }
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('clients_accounts');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down() {
+		Schema::dropIfExists('clients_accounts');
+	}
 }

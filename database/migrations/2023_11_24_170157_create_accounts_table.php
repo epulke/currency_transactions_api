@@ -4,16 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccountsTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('accounts', function (Blueprint $table) {
+class CreateAccountsTable extends Migration {
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up() {
+		Schema::create('accounts', function (Blueprint $table) {
 			$table->id('accountid');
 			$table->string('account_number')->unique();
 			$table->unsignedBigInteger('currencyid');
@@ -21,16 +19,15 @@ class CreateAccountsTable extends Migration
 			$table->timestamps();
 
 			$table->foreign('currencyid')->references('currencyid')->on('currencies');
-        });
-    }
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('accounts');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down() {
+		Schema::dropIfExists('accounts');
+	}
 }
