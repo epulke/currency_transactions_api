@@ -102,7 +102,7 @@ There are tests available for the api, but because Exchangerate.host api data is
 To set up the environment:
 1. Copy your .env file and save it as .env.testing. Change the database name for a different one, other parts can stay the same.
 
-2. Open phpunit.xml file input your database name in:
+2. Open [phpunit.xml](https://github.com/epulke/currency_transactions_api/blob/master/phpunit.xml) file input your database name in:
 <code>name="DB_DATABASE" value="currency_transactions_test"</code>
 
 3. Run migrations:
