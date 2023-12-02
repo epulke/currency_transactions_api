@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-
 class AccountControllerTest extends GeneralTestCase {
 
 	public function testValidClientidForGetAccountsByClientid() {
@@ -17,8 +15,8 @@ class AccountControllerTest extends GeneralTestCase {
 				'accountid',
 				'account_number',
 				'currency_name',
-				'balance',
-			],
+				'balance'
+			]
 		]);
 
 		$response->assertExactJson([

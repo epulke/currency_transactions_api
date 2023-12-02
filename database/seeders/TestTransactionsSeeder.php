@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Account;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +14,25 @@ class TestTransactionsSeeder extends Seeder {
 			'amount_from' => 10,
 			'amount_to' => 10.9,
 			'exchange_rate' => 1.09,
-			'created_at' => now(),
-			'updated_at' => now(),
+			'created_at' => Carbon::parse('2023-11-30 21:05:50')->format('Y-m-d H:i:s'),
+			'updated_at' => Carbon::parse('2023-11-30 21:05:50')->format('Y-m-d H:i:s'),
 		]);
+
+		$rows = 1;
+
+		while ($rows <= 5) {
+			$time = '2023-11-30 21:05:5' . $rows;
+			DB::table('transactions')->insert([
+				'accountid_from' => 5,
+				'accountid_to' => 6,
+				'amount_from' => 10,
+				'amount_to' => 10.9,
+				'exchange_rate' => 1.09,
+				'created_at' => Carbon::parse($time)->format('Y-m-d H:i:s'),
+				'updated_at' => Carbon::parse($time)->format('Y-m-d H:i:s'),
+			]);
+
+			$rows++;
+		}
 	}
 }

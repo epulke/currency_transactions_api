@@ -32,7 +32,7 @@ class TransactionControllerTest extends GeneralTestCase {
 		bcscale(16);
 
 		$expected_transaction = [
-			'transactionsid' => 2,
+			'transactionsid' => 7,
 			'accountid_from' => 1,
 			'accountid_to' => 2,
 			'amount_from' => bcdiv('10', '1.1'),
